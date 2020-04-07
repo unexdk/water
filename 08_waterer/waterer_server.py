@@ -58,5 +58,5 @@ thread.start_new_thread(update, ("update_thread",))
 try:
     run(host="0.0.0.0", port=80)
 finally:
-    print('Cleaning up GPIO')
+    print('Cleaning up GPIO HALLO')
     GPIO.cleanup()
