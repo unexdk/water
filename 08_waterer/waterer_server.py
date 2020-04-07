@@ -13,8 +13,8 @@ GPIO.setup(PUMP_PIN, GPIO.OUT)
 GPIO.output(PUMP_PIN, 1)
 
 # Glogal variables
-start_time = "22:00"
-duration = "30"
+start_time = "12:00"
+duration = "2"
 
 # Handler for the home page
 @route('/')
@@ -41,13 +41,13 @@ def update(thread_name):
         if current_time == start_time and not watering:
             print("Starting Watering")
             watering = True
-            GPIO.output(PUMP_PIN, 1)
+            GPIO.output(PUMP_PIN, 0)
             end_timestamp = time.time() + int(duration) * 60
         # Check to see if its time to stop watering
         if watering and time.time() > end_timestamp:
             print("End Watering")
             watering = False
-            GPIO.output(PUMP_PIN, 0)
+            GPIO.output(PUMP_PIN, 1)
             
         time.sleep(1) # allow other threads to run
 
